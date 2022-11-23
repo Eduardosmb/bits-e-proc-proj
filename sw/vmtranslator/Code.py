@@ -92,17 +92,75 @@ class Code:
         commands.append(self.writeHead(command))
 
         if command == "add":
-            pass # TODO
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %D")
+            commands.append("decw %D")
+            commands.append("decw %D")
+            commands.append("movw %D, %A")
+            commands.append("movw (%A), %D")
+            commands.append("leaw $SP, %A ")
+            commands.append("movw (%A), %A")
+            commands.append("subw %A, $1, %A")
+            commands.append("addw (%A), %D, %D")
+            commands.append("subw %A, $1, %A")
+            commands.append("movw %D, (%A)")
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")
+            commands.append("subw %A, $1, %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw %D, (%A)")
+
+             # TODO
         elif command == "sub":
-            pass # TODO
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %D")
+            commands.append("decw %D")
+            commands.append("decw %D")
+            commands.append("movw %D, %A")
+            commands.append("movw (%A), %D")
+            commands.append("leaw $SP, %A ")
+            commands.append("movw (%A), %A")
+            commands.append("subw %A, $1, %A")
+            commands.append("subw %D, (%A), %D")
+            commands.append("subw %A, $1, %A")
+            commands.append("movw %D, (%A)")
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")
+            commands.append("subw %A, $1, %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw %D, (%A)")
+            # TODO
         elif command == "or":
             pass # TODO
         elif command == "and":
             pass # TODO
         elif command == "not":
-            pass # TODO
+            
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %D")
+            commands.append("decw %D")
+            commands.append("movw %D, %A")
+            commands.append("movw (%A), %D")
+            commands.append("notw %D")
+            commands.append("movw %D, (%A)")
+
+        
+
+                 # TODO
         elif command == "neg":
-            pass # TODO
+
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %D")
+            commands.append("decw %D")
+            commands.append("movw %D, %A")
+            commands.append("movw (%A), %D")
+            commands.append("negw %D")
+            commands.append("movw %D, (%A)")
+           
+
+             # TODO
         elif command == "eq":
             # dica, usar self.getUniqLabel() para obter um label único
             pass # TODO
@@ -123,6 +181,21 @@ class Code:
         if segment == "" or segment == "constant":
             return False
         elif segment == "local":
+            
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %D")
+            commands.append("decw %D")
+            commands.append("movw %D, %A")
+            commands.append("movw (%A), %D")
+
+            commands.append("leaw $LCL, %A")
+            commands.append("movw (%A), %A")
+
+            commands.append(f"addw ${index}, %A, %A")
+            commands.append("movw %D, (%A)")
+            
+            
+
             # dica: usar o argumento index (push local 1)
             pass # TODO
         elif segment == "argument":
@@ -146,6 +219,20 @@ class Code:
         commands.append(self.writeHead(command + " " + segment + " " + str(index)))
 
         if segment == "constant":
+
+            commands.append(f"leaw ${index}, %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")
+
+            commands.append("movw %D, (%A)")
+
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %D")
+            commands.append("addw $1, (%A), %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw %D, (%A)")
+            
             # dica: usar index para saber o valor da consante
             # push constant index
             pass # TODO
