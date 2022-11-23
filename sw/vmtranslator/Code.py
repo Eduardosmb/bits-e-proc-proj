@@ -92,17 +92,80 @@ class Code:
         commands.append(self.writeHead(command))
 
         if command == "add":
-            pass # TODO
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")
+            commands.append("decw %A")
+            commands.append("movw (%A), %D")
+            commands.append("decw %A")
+            commands.append("addw %D, (%A), %D")
+            commands.append("movw %D, (%A)")
+            commands.append("incw %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $SP,%A")
+            commands.append("movw %D, (%A)")
+            
         elif command == "sub":
-            pass # TODO
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")
+            commands.append("decw %A")
+            commands.append("movw (%A), %D")
+            commands.append("decw %A")
+            commands.append("subw (%A), %D, %D")
+            commands.append("movw %D, (%A)")
+            commands.append("incw %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $SP,%A")
+            commands.append("movw %D, (%A)")
+
         elif command == "or":
-            pass # TODO
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")
+            commands.append("decw %A")
+            commands.append("movw (%A), %D")
+            commands.append("decw %A")
+            commands.append("orw (%A), %D, %D")
+            commands.append("movw %D, (%A)")
+            commands.append("incw %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $SP,%A")
+            commands.append("movw %D, (%A)")
         elif command == "and":
-            pass # TODO
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")
+            commands.append("decw %A")
+            commands.append("movw (%A), %D")
+            commands.append("decw %A")
+            commands.append("andw (%A), %D, %D")
+            commands.append("movw %D, (%A)")
+            commands.append("incw %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $SP,%A")
+            commands.append("movw %D, (%A)")
+
         elif command == "not":
-            pass # TODO
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")
+            commands.append("decw %A")
+            commands.append("movw (%A), %D")
+            commands.append("notw %D")
+            commands.append("movw %D, (%A)")
+            commands.append("incw %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $SP,%A")
+            commands.append("movw %D, (%A)")
+
         elif command == "neg":
-            pass # TODO
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")
+            commands.append("decw %A")
+            commands.append("movw (%A), %D")
+            commands.append("negw %D")
+            commands.append("movw %D, (%A)")
+            commands.append("incw %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $SP,%A")
+            commands.append("movw %D, (%A)")
+            
         elif command == "eq":
             # dica, usar self.getUniqLabel() para obter um label único
             pass # TODO

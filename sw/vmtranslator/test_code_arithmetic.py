@@ -51,13 +51,13 @@ def test_andd():
     assert vm_test(abs_path("test_assets/and.vm"), ram, tst)
 
 def test_nott():
-    x = 8;
+    x = 8
     ram = {0: 257, 256: x}
     tst = {0: 257, 256: ~x}
     assert vm_test(abs_path("test_assets/not.vm"), ram, tst)
 
 def test_neg():
-    x = 8;
+    x = 8
     ram = {0: 257, 256: x}
     tst = {0: 257, 256: -x}
     assert vm_test(abs_path("test_assets/neg.vm"), ram, tst)
