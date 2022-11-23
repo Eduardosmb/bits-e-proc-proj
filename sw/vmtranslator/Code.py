@@ -124,20 +124,145 @@ class Code:
             return False
         elif segment == "local":
             # dica: usar o argumento index (push local 1)
-            pass # TODO
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') #D = 259
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %A')#A = 258
+            commands.append('movw (%A), %D')#D = z
+            commands.append('leaw $32, %A')#A= 32
+            contador = 0 
+            while contador<index:
+                commands.append('incw %A')
+                contador += 1
+            commands.append('movw %D, (%A)')
+            #mover sp
+            commands.append('leaw $0, %A')#A = 0
+            commands.append('movw (%A), %D') #D = 259
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %D')#D = 258
+            commands.append('leaw $0, %A')
+            commands.append('movw %D, (%A)')
+             
+
         elif segment == "argument":
-            pass # TODO
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') #D = 259
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %A')#A = 258
+            commands.append('movw (%A), %D')#D = z
+            commands.append('leaw $ARG, %A')#A= arg
+            contador = 0 
+            while contador<index:
+                commands.append('incw %A')
+                contador += 1
+            commands.append('movw %D, (%A)')
+            #mover sp
+            commands.append('leaw $0, %A')#A = 0
+            commands.append('movw (%A), %D') #D = 259
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %D')#D = 258
+            commands.append('leaw $0, %A')
+            commands.append('movw %D, (%A)')
+        
         elif segment == "this":
-            pass # TODO
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') #D = 259
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %A')#A = 258
+            commands.append('movw (%A), %D')#D = z
+            commands.append('leaw $1024, %A')#A= 32
+            contador = 0 
+            while contador<index:
+                commands.append('incw %A')
+                contador += 1
+            commands.append('movw %D, (%A)')
+            #mover sp
+            commands.append('leaw $0, %A')#A = 0
+            commands.append('movw (%A), %D') #D = 259
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %D')#D = 258
+            commands.append('leaw $0, %A')
+            commands.append('movw %D, (%A)')
+        
         elif segment == "that":
-            pass # TODO
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') #D = 259
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %A')#A = 258
+            commands.append('movw (%A), %D')#D = z
+            commands.append('leaw $1024, %A')#A= 32
+            contador = 0 
+            while contador<index:
+                commands.append('incw %A')
+                contador += 1
+            commands.append('movw %D, (%A)')
+            #mover sp
+            commands.append('leaw $0, %A')#A = 0
+            commands.append('movw (%A), %D') #D = 259
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %D')#D = 258
+            commands.append('leaw $0, %A')
+            commands.append('movw %D, (%A)')
+        
         elif segment == "temp":
-            # dica: usar o argumento index (push temp 0)
-            pass # TODO
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') #D = 259
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %A')#A = 258
+            commands.append('movw (%A), %D')#D = z
+            commands.append('leaw $5, %A')#A= 32
+            contador = 0 
+            while contador<index:
+                commands.append('incw %A')
+                contador += 1
+            commands.append('movw %D, (%A)')
+            #mover sp
+            commands.append('leaw $0, %A')#A = 0
+            commands.append('movw (%A), %D') #D = 259
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %D')#D = 258
+            commands.append('leaw $0, %A')
+            commands.append('movw %D, (%A)')
+        
         elif segment == "static":
-            pass # TODO
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') #D = 259
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %A')#A = 258
+            commands.append('movw (%A), %D')#D = z
+            commands.append('leaw $16, %A')#A= 32
+            contador = 0 
+            while contador<index:
+                commands.append('incw %A')
+                contador += 1
+            commands.append('movw %D, (%A)')
+            #mover sp
+            commands.append('leaw $0, %A')#A = 0
+            commands.append('movw (%A), %D') #D = 259
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %D')#D = 258
+            commands.append('leaw $0, %A')
+            commands.append('movw %D, (%A)')
+        
         elif segment == "pointer":
-            pass # TODO
+            commands.append('leaw $0, %A')
+            commands.append('movw (%A), %D') #D = 259
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %A')#A = 258
+            commands.append('movw (%A), %D')#D = z
+            commands.append('leaw $3, %A')#A= 32
+            contador = 0 
+            while contador<index:
+                commands.append('incw %A')
+                contador += 1
+            commands.append('movw %D, (%A)')
+            #mover sp
+            commands.append('leaw $0, %A')#A = 0
+            commands.append('movw (%A), %D') #D = 259
+            commands.append('leaw $1, %A')
+            commands.append('subw %D, %A, %D')#D = 258
+            commands.append('leaw $0, %A')
+            commands.append('movw %D, (%A)')
 
         self.commandsToFile(commands)
 
