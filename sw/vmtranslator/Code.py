@@ -439,25 +439,129 @@ class Code:
         commands.append(self.writeHead(command + " " + segment + " " + str(index)))
 
         if segment == "constant":
+
+            commands.append(f"leaw ${index}, %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")
+
+            commands.append("movw %D, (%A)")
+
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %D")
+            commands.append("addw $1, (%A), %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw %D, (%A)")
+            
             # dica: usar index para saber o valor da consante
             # push constant index
-            pass # TODO
         elif segment == "local":
-            pass # TODO
+
+            commands.append(f"leaw ${index}, %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $LCL, %A")
+            commands.append("addw %D, (%A), %D")
+            commands.append("movw %D, %A")
+            commands.append("movw (%A), %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")
+            commands.append("movw %D, (%A)")
+            commands.append("movw %A, %D")
+            commands.append("addw $1, %D, %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw %D, (%A)")
+
+
+
         elif segment == "argument":
-            pass # TODO
+
+            commands.append(f"leaw ${index}, %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $ARG, %A")
+            commands.append("addw %D, (%A), %D")
+            commands.append("movw %D, %A")
+            commands.append("movw (%A), %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")
+            commands.append("movw %D, (%A)")
+            commands.append("movw %A, %D")
+            commands.append("addw $1, %D, %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw %D, (%A)")
+
         elif segment == "this":
-            pass # TODO
+
+            commands.append(f"leaw ${index}, %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $THIS, %A")
+            commands.append("addw %D, (%A), %D")
+            commands.append("movw %D, %A")
+            commands.append("movw (%A), %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")
+            commands.append("movw %D, (%A)")
+            commands.append("movw %A, %D")
+            commands.append("addw $1, %D, %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw %D, (%A)")
+
         elif segment == "that":
-            pass # TODO
-        elif segment == "argument":
-            pass # TODO
+            commands.append(f"leaw ${index}, %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $THAT, %A")
+            commands.append("addw %D, (%A), %D")
+            commands.append("movw %D, %A")
+            commands.append("movw (%A), %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")
+            commands.append("movw %D, (%A)")
+            commands.append("movw %A, %D")
+            commands.append("addw $1, %D, %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw %D, (%A)")
         elif segment == "static":
-            pass # TODO
+            commands.append(f"leaw ${index}, %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $16, %A")
+            commands.append("addw %D, %A, %D")
+            commands.append("movw %D, %A")
+            commands.append("movw (%A), %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")
+            commands.append("movw %D, (%A)")
+            commands.append("movw %A, %D")
+            commands.append("addw $1, %D, %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw %D, (%A)")
+
         elif segment == "temp":
-            pass # TODO
+            commands.append(f"leaw ${index}, %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $5, %A")
+            commands.append("addw %D, %A, %D")
+            commands.append("movw %D, %A")
+            commands.append("movw (%A), %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")
+            commands.append("movw %D, (%A)")
+            commands.append("movw %A, %D")
+            commands.append("addw $1, %D, %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw %D, (%A)")
         elif segment == "pointer":
-            pass # TODO
+            commands.append(f"leaw ${index}, %A")
+            commands.append("movw %A, %D")
+            commands.append("leaw $3, %A")
+            commands.append("addw %D, %A, %D")
+            commands.append("movw %D, %A")
+            commands.append("movw (%A), %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw (%A), %A")
+            commands.append("movw %D, (%A)")
+            commands.append("movw %A, %D")
+            commands.append("addw $1, %D, %D")
+            commands.append("leaw $SP, %A")
+            commands.append("movw %D, (%A)")
 
         self.commandsToFile(commands)
 
