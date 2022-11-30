@@ -118,7 +118,6 @@ jobs:
             - name: test binaryDigit
               run: |
                   pytest -k test_binaryDigit -v
-<<<<<<< HEAD
             - name: test ram
               run: |
                   pytest -k test_ram -v     
@@ -133,3 +132,8 @@ jobs:
             - name: test PC
               run: |
                   pytest -k test_pc -v
+                  
+          # ---------- Projeto Assemobler ----------------
+            - name: test Dest
+              run: |
+                  pytest -k test_dest -v
