@@ -134,6 +134,6 @@ jobs:
                   pytest -k test_pc -v
                   
           # ---------- Projeto Assemobler ----------------
-            - name: test Dest
+            - name: test dest
               run: |
                   pytest -k test_dest -v
